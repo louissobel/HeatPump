@@ -171,6 +171,7 @@ bool HeatPump::update() {
   // any remaining responses that would prevent us from receiving
   // RCVD_PKT_UPDATE_SUCCESS
   readAllPackets();
+  if(wantedSettings == currentSettings) return true;
 
   byte packet[PACKET_LEN] = {};
   createPacket(packet, wantedSettings);
